@@ -1,4 +1,15 @@
 <?php include("mConfig.php");?>
+<?php 
+ session_start();
+ if(isset($_SESSION["uname"]))
+ {
+   $uname = $_SESSION["uname"];
+  }
+  else
+  {
+    header("location:./login.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +51,7 @@
     </form>
   </div>
 </nav>  
+<h3 align="center"> Welcome, <?=$uname?></h3>
 <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
   <div class="card-header">Dashboard</div>
   <div class="card-body">
@@ -77,7 +89,7 @@
     
         <a href="./addProduct.php" class="btn btn-primary">Add Product</a>
          <a href="./updateProduct.php" class="btn btn-success">Update Product</a>
-        <a href="" class="btn btn-danger">Delete Product</a>
+       <a href="./deleteProduct.php" class="btn btn-danger">Delete Product</a>
    </td>
     </tr>
     <?php } ?>

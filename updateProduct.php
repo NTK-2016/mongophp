@@ -6,7 +6,7 @@
     "sort" => array("_id" => -1),
     );
    $tablemCollection = $db->items;
-    $result = $tablemCollection->find($filter,$options);
+  $result = $tablemCollection->find($filter,$options);
     foreach ($result as $product_data) 
     {
         $pname = $product_data["productName"];
@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Product</title>
+    <title>Update</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 </head>
 <body>
@@ -48,10 +48,10 @@
     { $errormsg ="*Required";}
     $tablemCollection = $db->items;
     $OldcolumnMDocument= array
-                            ("productName"=>$productName,
-                             "price"=>$Price,
-                             "qty"=>$qty,
-                             "comment"=>$comment
+                            ("productName"=>$pname,
+                             "price"=>$pprice,
+                             "qty"=>$pqty,
+                             "comment"=>$pcomment
                             ); 
   $UpdatecolumnMDocument= array
                           ("productName"=>$productName,
@@ -59,7 +59,7 @@
                              "qty"=>$qty,
                              "comment"=>$comment
                            );              
-    $tablemCollection->updateOne($UpdatecolumnMDocument,array('$set'=>$OldcolumnMDocument));
+    $tablemCollection->updateOne($OldcolumnMDocument,array('$set'=>$UpdatecolumnMDocument));
     $message = "<h3>Product Updated Successfully</h3>";                     
     }
     else
@@ -96,7 +96,7 @@
       <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
       <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
     </div> -->
-    <button type="submit" class="btn btn-primary">Update Product</button>
+    <button type="submit" class="btn btn-success">Update Product</button>
   </fieldset>
 </form>  
 </body>
